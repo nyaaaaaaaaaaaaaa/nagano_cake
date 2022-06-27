@@ -35,12 +35,7 @@ class DeviseCreateAdmins < ActiveRecord::Migration[6.1]
 
       t.timestamps null: false
 
-      ## （2022.6.26　追加）
-      t.integer :id
-      t.string :email
-      t.string :encrypted_password
-      t.datetime :created_at
-      t.datetime :updated_at
+     
 
     end
 
