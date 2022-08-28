@@ -1,0 +1,65 @@
+<p id = "notice"></p>
+<div class = "container px-5 px-sm-0">
+  <div class="row">
+    <div class>
+        <h4><%= @customer.last_name %><%= @customer.first_name %>さんの会員詳細</h4>
+    </div>
+  </div>
+  <div class></br></div>
+  <p style="line-height:2rem"></p>
+  <div class = "row">
+    <div class = "col-lg-2">会員ID</div>
+    <div class = "col-lg-10"><%= @customer.id %></div>
+  </div>
+  <p style="line-height:2rem"></p>
+  <div class = "row">
+    <div class = "col-lg-2">氏名</div>
+    <div class = "col-lg-10"><%= @customer.last_name %>&nbsp;<%= @customer.first_name %></div>
+  </div>
+  <p style="line-height:2rem"></p>
+  <div class = "row">
+    <div class = "col-lg-2">フリガナ</div>
+    <div class = "col-lg-10"><%= @customer.last_name_kana %>&nbsp;<%= @customer.first_name_kana %></div>
+  </div>
+  <p style="line-height:2rem"></p>
+  <div class = "row">
+    <div class = "col-lg-2">郵便番号</div>
+    <div class = "col-lg-10"><%= @customer.postal_code %></div>
+  </div>
+  <p style="line-height:2rem"></p>
+  <div class = "row">
+    <div class = "col-lg-2">住所</div>
+    <div class = "col-lg-10"><%= @customer.address %></div>
+  </div>
+  <p style="line-height:2rem"></p>
+  <div class = "row">
+    <div class = "col-lg-2">電話番号</div>
+    <div class = "col-lg-10"><%= @customer.telephone_number %></div>
+  </div>
+  <p style="line-height:2rem"></p>
+  <div class = "row">
+    <div class = "col-lg-2">メールアドレス</div>
+    <div class = "col-lg-10"><%= @customer.email %></div>
+  </div>
+  <p style="line-height:2rem"></p>
+  <div class = "row">
+    <div class = "col-lg-2">会員ステータス</div>
+    <div class = "col-lg-10">
+      <%if @customer.is_deleted %>
+      <span style="color:gray">退会</span>
+      <% else %>
+      <span style="color:green">有効</span>
+      <% end %>
+    </div>
+  </div>
+  <p style="line-height:2rem"></p>
+  <div class = "row">
+    <div class = "col-lg-2"></div>
+    <div class = "col-lg-2">
+      <%= link_to '編集する', edit_admin_customer_path(@customer), class:"btn btn-sm btn-success btn-text-light" %>
+    </div>
+    <div class = "col-lg-2">
+      <%= link_to '注文履歴一覧を見る', top_path, class:"btn btn-sm btn-primary btn-text-light" %>
+    </div>
+  </div>
+</div>

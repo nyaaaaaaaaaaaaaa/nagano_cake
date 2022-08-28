@@ -35,7 +35,7 @@ class DeviseCreateAdmins < ActiveRecord::Migration[6.1]
 
       t.timestamps null: false
 
-     
+
 
     end
 

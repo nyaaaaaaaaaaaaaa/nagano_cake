@@ -1,0 +1,91 @@
+<main>
+  <p id = "notice"></p>
+  <div class = "container">
+    <div class = "row">
+      <div class = "px-3 mx-auto">
+        <h4>会員情報編集</h4>
+        <div class></br></div>
+        <%= form_with model: @customer, url: customers_information_edit_path, method: :patch do |f| %>
+        <div class="field">
+          <div class = "row">
+            <div class = "col-lg-4">
+              <tr>名前</tr>
+            </div>
+            <div class = "col-lg-4">
+              <%= f.text_field :last_name %>
+            </div>
+            <div class = "col-lg-4">
+              <%= f.text_field :first_name %>
+            </div>
+          </div>
+        <p style="line-height:2rem"></p>
+        <div class="field">
+          <div class = "row">
+            <div class = "col-lg-4">
+              <tr>フリガナ</tr>
+            </div>
+            <div class = "col-lg-4">
+              <%= f.text_field :last_name_kana %>
+            </div>
+            <div class = "col-lg-4">
+              <%= f.text_field :first_name_kana %>
+            </div>
+          </div>
+        <p style="line-height:2rem"></p>
+        <div class="field">
+          <div class = "row">
+            <div class = "col-lg-4">
+              <%= f.label :郵便番号 %>
+            </div>
+            <div class = "col-lg-4">
+              <%= f.text_field :postal_code %>
+            </div>
+          </div>
+        <p style="line-height:2rem"></p>
+        <div class="field">
+          <div class = "row">
+            <div class = "col-lg-4">
+              <%= f.label :住所 %>
+            </div>
+            <div class = "col-lg-4">
+              <%= f.text_field :address, size: "60x20" %>
+            </div>
+          </div>
+        <p style="line-height:2rem"></p>
+        <div class="field">
+          <div class = "row">
+            <div class = "col-lg-4">
+              <%= f.label :電話番号 %>
+            </div>
+            <div class = "col-lg-4">
+              <%= f.text_field :telephone_number %>
+            </div>
+          </div>
+        <p style="line-height:2rem"></p>
+        <div class="field">
+          <div class = "row">
+            <div class = "col-lg-4">
+              <%= f.label :メールアドレス %>
+            </div>
+            <div class = "col-lg-4">
+              <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+            </div>
+          </div>
+        <p style="line-height:2rem"></p>
+        <div class = "row">
+          <div class = "col-lg-4"></div>
+          <div class = "col-lg-3 py-3">
+            <%= f.submit '編集内容を保存', class: "btn btn-sm btn-success btn-text-light" %>
+          </div>
+        <% end %>
+          <div class = "col-lg-2 py-3"></div>
+          <div class = "col-lg-3 py-3">
+            <%= link_to customers_unsubscribe_path, class: "btn btn-sm btn-danger btn-text-light" do %>
+              退会する
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

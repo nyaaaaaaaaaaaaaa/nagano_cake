@@ -1,0 +1,41 @@
+<p id = "notice"></p>
+<div class = "container">
+  <div class = "row">
+    <div class = "col-lg-1"></div>
+    <div class = "col-lg-7 px-3 mx-auto">
+      <h4>注文履歴一覧</h4>
+    </div>
+    <div class = "col-lg-4"></div>
+  </div>
+  <div class></br></div>
+  <table class = "table">
+    <thead>
+      <th>注文日</th>
+      <th>配送先</th>
+      <th>注文商品</th>
+      <th>支払金額</th>
+      <th>ステータス</th>
+      <th>注文詳細</th>
+    </thead>
+    <% @orders.each do |order| %>
+    <tbody>
+      <tr>
+        <td><%= order.created_at.strftime('%Y/%m/%d')  %></td>
+        <td>
+          〒<%= order.postal_code %></br>
+          <%= order.address %></br>
+          <%= order.name %>
+        </td>
+        <td>
+          <% order.order_details.each do |order_detail| %>
+          <%= order_detail.item.name %></br>
+          <% end %>
+        </td>
+        <td><%= (order.total_payment).to_s(:delimited) %>円</td>
+        <td><%= order.status_i18n %></td>
+        <td><%= link_to '表示する', order_path(order), class:"btn btn-sm btn-primary btn-text-light" %></td>
+      </tr>
+    </tbody>
+    <% end %>
+  </table>
+</div>

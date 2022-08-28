@@ -1,0 +1,36 @@
+<main>
+  <div class = "container">
+    <div class = "row">
+      <h2 class = "px-3 mx-auto">
+        <p style="line-height:2rem"></p>
+        <strong>
+          本当に退会しますか？
+        </strong>
+      </h2>
+    </div>
+    <div class="center-block">
+      <h4 class = "px-3 mx-auto text-center">
+        <p style="line-height:2rem"></p>
+        退会すると、会員登録情報や</br>
+        これまでの購入履歴が閲覧できなくなります。</br>
+        退会する場合は、「退会する」をクリックしてください。</br>
+      </h4>
+    </div>
+    <p style="line-height:2rem"></p>
+    <div class = "row">
+      <div class = "col-lg-4"></div>
+      <div class = "col-lg-2 mx-auto text-center">
+      <%= link_to customers_my_page_path, class: "btn btn-sm btn-primary btn-text-light" do %>
+        退会しない
+      <% end %>
+      </div>
+      <div class = "col-lg-2 mx-auto text-center">
+      <%= link_to customers_withdraw_path, method: :patch, class: "btn btn-sm btn-danger btn-text-light" do %>
+        退会する
+      <% end %>
+      </div>
+      <div class = "col-lg-4"></div>
+    </div>
+
+  </div>
+</main>

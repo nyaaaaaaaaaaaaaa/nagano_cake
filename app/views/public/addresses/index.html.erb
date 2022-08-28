@@ -1,0 +1,65 @@
+<p id = "notice"></p>
+<div class = "container">
+  <div class = "row">
+    <div class = "col-lg-7 px-3 mx-auto">
+      <h4>配送先登録/一覧</h4>
+    </div>
+  </div>
+  <div class></br></div>
+  <%= form_with model: @address, url: addresses_path, method: :POST do |f| %>
+  <div class="field">
+    <div class = "row">
+      <div class = "col-lg-3">
+        <tr>郵便番号（ハイフンなし）</tr>
+      </div>
+      <div class = "col-lg-9">
+        <%= f.text_field :postal_code %>
+      </div>
+    </div>
+    <p style="line-height:2rem"></p>
+    <div class = "row">
+      <div class = "col-lg-3">
+        <tr>住所</tr>
+      </div>
+      <div class = "col-lg-9">
+        <%= f.text_field :address, size: "40x20" %>
+      </div>
+    </div>
+    <p style="line-height:2rem"></p>
+    <div class = "row">
+      <div class = "col-lg-3">
+        <tr>宛名</tr>
+      </div>
+      <div class = "col-lg-4">
+        <%= f.text_field :name %>
+      </div>
+      <div class ="col-lg-5">
+        <%= f.submit '新規登録', class: "btn btn-sm btn-success btn-text-light" %>
+      </div>
+    </div>
+  </div>
+  <% end %>
+  <div class></br></div>
+  <div class></br></div>
+  <table class = "table">
+    <thead>
+      <th>郵便番号</th>
+      <th>住所</th>
+      <th>宛名</th>
+      <th>&nbsp;</th>
+    </thead>
+    <% @addresses.each do |address| %>
+    <tbody>
+      <tr>
+        <td><%= address.postal_code %></td>
+        <td><%= address.address %></td>
+        <td><%= address.name %></td>
+        <td>
+          <%= link_to "編集する", edit_address_path(address), class:"btn btn-sm btn-success btn-text-light" %>
+          <%= link_to "削除する", address_path(address), class:"btn btn-sm btn-danger btn-text-light", method: :delete, "data-confirm" => "本当に削除しますか？" %>
+        </td>
+      </tr>
+    </tbody>
+    <% end %>
+  </table>
+</div>

@@ -1,0 +1,42 @@
+<p id = "notice"></p>
+<div class = "container px-5 px-sm-0">
+  <div class = "row">
+    <div class = "col-lg-10 px-3 mx-auto">
+      <h4>商品一覧</h4>
+    </div>
+    <div class = "col-lg-2 px-3 mx-auto">
+      <%= link_to "+", new_admin_item_path, class: "btn btn-text-secondary btn-outline-secondary btn-lg" %>
+    </div>
+  </div>
+  <div class></br></div>
+  <table class = "table">
+    <thead>
+      <th>商品ID</th>
+      <th>商品名</th>
+      <th>税抜価格</th>
+      <th>ジャンル</th>
+      <th>ステータス</th>
+    </thead>
+    <tbody>
+      <% @items.each do |item| %>
+      <tr>
+        <td><%= item.id %></td>
+        <td><%= link_to item.name, "/admin/items/#{item.id}" %></td>
+        <td><%= item.price.to_s(:delimited) %>円</td>
+        <td><%= item.genre_id %></td>
+        <td>
+          <%if item.is_active %>
+          <span style="color:green">販売中</span>
+          <% else %>
+          <span style="color:gray">販売停止中</span>
+          <% end %>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+<div class="d-flex justify-content-center">
+  <%= paginate @items %>
+</div>
+

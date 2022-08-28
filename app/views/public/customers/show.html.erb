@@ -1,0 +1,106 @@
+<main>
+  <p id = "notice"></p>
+  <div class = "container px-5 px-sm-0">
+    <div class = "row">
+      <div class="col-lg-1"></div>
+      <h4 class = "px-3">
+        マイページ
+      </h4>
+    </div>
+    <div class></br></div>
+    <table class = "table">
+      <tbody>
+        <div class = "row">
+          <div class="col-lg-1">
+            <strong>登録情報</strong>
+          </div>
+          <div class="col-lg-2">
+            <%= link_to customers_information_edit_path, class: "btn btn-sm btn-success btn-text-light" do %>
+              編集する
+            <% end %>
+          </div>
+        </div>
+        <div class></br></div>
+        <div class = "row">
+          <div class = "col-lg-2 py-3 mx-auto border border-dark">
+            氏名
+          </div>
+          <div class = "col-lg-4 py-3 mx-auto border border-dark">
+            <span><%= @customer.last_name %></span>
+            <span><%= @customer.first_name %></span>
+          </div>
+          <div class = "col-lg-6 py-3 mx-auto"></div>
+        </div>
+        <div class = "row">
+          <div class = "col-lg-2 py-3 mx-auto border border-dark">
+          カナ
+          </div>
+          <div class = "col-lg-4 py-3 mx-auto border border-dark">
+            <span><%= @customer.last_name_kana %></span>
+            <span><%= @customer.first_name_kana %></span>
+          </div>
+          <div class = "col-lg-6 py-3 mx-auto"></div>
+        </div>
+        <div class = "row">
+          <div class = "col-lg-2 py-3 mx-auto border border-dark">
+            郵便番号
+          </div>
+          <div class = "col-lg-4 py-3 mx-auto border border-dark">
+            <span><%= @customer.postal_code %></span>
+          </div>
+          <div class = "col-lg-6 py-3 mx-auto"></div>
+        </div>
+        <div class = "row">
+          <div class = "col-lg-2 py-3 mx-auto border border-dark">
+            住所
+          </div>
+          <div class = "col-lg-4 py-3 mx-auto border border-dark">
+            <span><%= @customer.address %></span>
+          </div>
+          <div class = "col-lg-6 py-3 mx-auto"></div>
+        </div>
+        <div class = "row">
+          <div class = "col-lg-2 py-3 mx-auto border border-dark">
+            電話番号
+          </div>
+          <div class = "col-lg-4 py-3 mx-auto border border-dark">
+            <span><%= @customer.telephone_number %></span>
+          </div>
+          <div class = "col-lg-6 py-3 mx-auto"></div>
+        </div>
+        <div class = "row">
+          <div class = "col-lg-2 py-3 mx-auto border border-dark">
+            メールアドレス
+          </div>
+          <div class = "col-lg-4 py-3 mx-auto border border-dark">
+            <span><%= @customer.email %></span>
+          </div>
+          <div class = "col-lg-6 py-3 mx-auto"></div>
+        </div>
+      </tbody>
+    </table>
+    <div class></br></div>
+    <div class = "row">
+      <div class="col-lg-1">
+        <tr>配送先</tr>
+      </div>
+      <div class="col-lg-3">
+        <%= link_to addresses_path, class: "btn btn-sm btn-primary btn-text-light" do %>
+          一覧を見る
+        <% end %>
+      </div>
+    </div>
+    <div class></br></div>
+      <div class = "row">
+        <div class="col-lg-1">
+          <tr>注文履歴</tr>
+        </div>
+        <div class="col-lg-3">
+          <%= link_to orders_path, class: "btn btn-sm btn-primary btn-text-light" do %>
+            一覧を見る
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

@@ -1,0 +1,96 @@
+<main>
+  <p id = "notice"></p>
+  <div class = "container px-5 px-sm-0">
+    <div class = "row">
+      <div class = "col-lg-10 px-3 mx-auto">
+        <h4>商品新規登録</h4>
+      </div>
+    </div>
+    <div class></br></div>
+    <%= form_with model: Item.new, url: admin_items_path do |f| %>
+    <div class="field">
+      <div class = "row">
+        <div class = "col-lg-2"></div>
+        <div class = "col-lg-3">
+          <%= f.label :商品画像 %>
+        </div>
+        <div class = "col-lg-5">
+          <%= f.file_field :image, accept: "image/*" %>
+        </div>
+      </div>
+    </div>
+    <p style="line-height:2rem"></p>
+    <div class="field">
+      <div class = "row">
+        <div class = "col-lg-2"></div>
+        <div class = "col-lg-3">
+          <%= f.label :商品名 %>
+        </div>
+        <div class = "col-lg-5">
+          <%= f.text_field :name, size: "40x20" %>
+        </div>
+      </div>
+    </div>
+    <p style="line-height:2rem"></p>
+    <div class="field">
+      <div class = "row">
+        <div class = "col-lg-2"></div>
+        <div class = "col-lg-3">
+          <%= f.label :商品説明 %>
+        </div>
+        <div class = "col-lg-5">
+          <%= f.text_area :introduction, size: "43x8" %>
+        </div>
+      </div>
+    </div>
+    <p style="line-height:2rem"></p>
+    <div class="field">
+      <div class = "row">
+        <div class = "col-lg-2"></div>
+        <div class = "col-lg-3">
+          <%= f.label :ジャンル %>
+        </div>
+        <div class = "col-lg-5">
+          <%= f.collection_select :genre_id, Genre.all, :id, :name, {prompt: '--選択してください--'} %>
+        </div>
+      </div>
+    </div>
+    <p style="line-height:2rem"></p>
+    <div class="field">
+      <div class = "row">
+        <div class = "col-lg-2"></div>
+        <div class = "col-lg-3">
+          <%= f.label :税抜価格 %>
+        </div>
+        <div class = "col-lg-5">
+          <%= f.text_field :price, size: "40x20" %>円
+        </div>
+      </div>
+    </div>
+    <p style="line-height:2rem"></p>
+    <div class="field">
+      <div class = "row">
+        <div class = "col-lg-2"></div>
+        <div class = "col-lg-3">
+          <%= f.label :販売ステータス %>
+        </div>
+        <div class = "col-lg-5">
+          <%= f.radio_button :is_active, :true %>
+          <%= f.label :is_active, "販売中", {value: :true, style: "display: inline-block;"} %>
+          <%= f.radio_button :is_active, :false %>
+          <%= f.label :is_active, "販売停止中", {value: :false, style: "display: inline-block;"} %>
+        </div>
+      </div>
+    </div>
+    <div class></br></div>
+    <div class = "row">
+      <div class = "col-lg-6"></div>
+      <div class="actions">
+        <div class = "col-lg-4">
+        <%= f.submit "新規登録", class:"btn btn-lg btn-success btn-text-light" %>
+        </div>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</main>

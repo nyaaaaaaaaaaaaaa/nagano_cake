@@ -1,0 +1,62 @@
+<p id = "notice"></p>
+<div class = "container">
+  <div class="row">
+    <div class = "col-md-2 border border-dark">
+      <strong>ジャンル検索</strong></br>
+      <table class = "table">
+        <tbody>
+          <tr>
+            <td>ケーキ</td>
+          </tr>
+          <tr>
+            <td>焼き菓子</td>
+          </tr>
+          <tr>
+            <td>プリン</td>
+          </tr>
+          <tr>
+            <td>キャンディ</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class = "col-md-10 py-3">
+      <div class = "col-md-6 py-3 mx-auto border border-dark">
+        ようこそ、ながのCAKEへ！</br>
+        このサイトは、ケーキ販売のECサイトになります。</br>
+        会員でない方も商品の閲覧はできますが、</br>
+        購入には会員登録が必要になります。</br>
+      </div>
+      <div class></br></div>
+      <div class = "col-md-10 py-3">
+        <h4><strong>新着商品</strong></h4>
+      </div>
+      <div class="row">
+        <div class = "col-md-1"></div>
+        <% @items.each do |item| %>
+        <div class = "col-md-2">
+          <% if item.image.attached? %>
+          <%= link_to item_path(item) do %>
+          <%= image_tag item.image, size: "100x100" %>
+          <% end %>
+          <% else %>
+          <%= link_to item_path(item) do %>
+          <%= image_tag 'no_image', size: "100x100" %>
+          <% end %>
+          <% end %> </br>
+          <strong><%= item.name %></strong>
+          <p>￥<%= item.with_tax_price.to_s(:delimited) %></p>
+        </div>
+        <% end %>
+      </div>
+      <div class></br></div>
+    </div>
+  </div>
+  <div class="row">
+    <div class = "col-md-8 py-3"></div>
+    <div class = "col-md-4 py-3">
+      <%= link_to "すべての商品を見る＞", items_path %>
+    </div>
+  </div>
+</div>
+

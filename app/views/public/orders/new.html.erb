@@ -1,0 +1,120 @@
+  <p id = "notice"></p>
+  <div class = "container px-5 px-sm-0">
+    <div class = "row">
+      <div class = "col-lg-10 px-3 mx-auto">
+        <h4>注文情報入力</h4>
+      </div>
+    </div>
+    <div class></br></div>
+    <%= form_with model: @order, url: orders_comfirm_path do |f| %>
+      <div class = "row">
+        <div class = "col-lg-1">
+          <strong>支払方法</strong>
+        </div>
+      </div>
+      <div class="field">
+        <div class = "row">
+          <div class = "col-lg-1"></div>
+          <div class = "col-lg-5">
+            <%= f.radio_button :payment_method, :credit_card %>
+            <%= f.label :payment_method_0, "クレジットカード" %>
+          </div>
+          <div class = "col-lg-6"></div>
+        </div>
+      </div>
+      <div class="field">
+        <div class = "row">
+          <div class = "col-lg-1"></div>
+          <div class = "col-lg-5">
+            <%= f.radio_button :payment_method, :transfer %>
+            <%= f.label :payment_method_1, "銀行振込" %>
+          </div>
+          <div class = "col-lg-6"></div>
+        </div>
+      </div>
+      <p style="line-height:2rem"></p>
+      <div class = "row">
+        <div class = "col-lg-2">
+          <strong>お届け先</strong>
+        </div>
+      </div>
+      <p style="line-height:2rem"></p>
+      <div class="field">
+        <div class = "row">
+          <div class = "col-lg-1"></div>
+          <div class = "col-lg-5">
+            <%= f.radio_button :address_number, 1 %>
+            <%= f.label :address_number_1, "ご自身の住所" %>
+          </div>
+          <div class = "col-lg-6"></div>
+          <div class = "col-lg-1"></div>
+          <div class = "col-lg-5">
+            〒<%= current_customer.postal_code %>
+            <%= current_customer.address %>
+          </div>
+          <div class = "col-lg-6"></div>
+          <div class = "col-lg-1"></div>
+          <div class = "col-lg-5">
+            <%= current_customer.last_name %>
+            <%= current_customer.first_name %>
+          </div>
+        </div>
+      </div>
+      <p style="line-height:2rem"></p>
+      <div class="field">
+        <div class = "row">
+          <div class = "col-lg-1"></div>
+          <div class = "col-lg-5">
+            <%= f.radio_button :address_number, 2 %>
+            <%= f.label :address_number_2, "登録済住所から選択" %>
+          </div>
+          <div class = "col-lg-6"></div>
+          <div class = "col-lg-1"></div>
+          <div class = "col-lg-5">
+            <%= f.collection_select(:address_id, @address, :id, :full_address) %>
+          </div>
+        </div>
+      </div>
+      <p style="line-height:2rem"></p>
+      <div class="field">
+        <div class = "row">
+          <div class = "col-lg-1"></div>
+          <div class = "col-lg-5">
+            <%= f.radio_button :address_number, 3 %>
+            <%= f.label :address_number_3, "新しいお届け先" %>
+          </div>
+          <div class = "col-lg-6"></div>
+          <div class = "col-lg-1"></div>
+          <div class = "col-lg-3">
+            <tr>郵便番号（ハイフンなし）</tr>
+          </div>
+          <div class = "col-lg-8">
+            <%= f.text_field :postal_code %>
+          </div>
+          <div class = "col-lg-1"></div>
+          <div class = "col-lg-3">
+            <tr>住所</tr>
+          </div>
+          <div class = "col-lg-8">
+            <%= f.text_field :address, size: "40x20" %>
+          </div>
+          <div class = "col-lg-1"></div>
+          <div class = "col-lg-3">
+            <tr>宛名</tr>
+          </div>
+          <div class = "col-lg-8">
+            <%= f.text_field :name %>
+          </div>
+        </div>
+      </div>
+      <div class></br></div>
+      <div class = "row">
+        <div class = "col-lg-4"></div>
+        <div class="actions">
+          <div class = "col-lg-4">
+          <%= f.submit "確認画面へ進む", class:"btn btn-sm btn-primary btn-text-light" %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>

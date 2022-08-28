@@ -1,0 +1,53 @@
+<p id = "notice"></p>
+<div class = "container px-5 px-sm-0">
+  <div class="row">
+    <div class = "col-md-2 border border-dark">
+      <strong>ジャンル検索</strong></br>
+      <table class = "table">
+        <tbody>
+          <tr>
+            <td>ケーキ</td>
+          </tr>
+          <tr>
+            <td>焼き菓子</td>
+          </tr>
+          <tr>
+            <td>プリン</td>
+          </tr>
+          <tr>
+            <td>キャンディ</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class = "col-lg-10 py-3">
+      <div class = "col-lg-10 py-3">
+        <h4>商品一覧（全<%= Item.count %>件）</h4>
+      </div>
+      <table>
+        <div class = "col-lg-10 py-3 form-inline">
+          <% @items.each do |item| %>
+          <div class = "col-lg-3">
+            <% if item.image.attached? %>
+            <%= link_to item_path(item) do %>
+              <%= image_tag item.image, size: "100x100" %>
+            <% end %>
+            <% else %>
+            <%= link_to item_path(item) do %>
+              <%= image_tag 'no_image', size: "100x100" %>
+            <% end %>
+            <% end %>
+            </br>
+            <strong><%= item.name %></strong>
+            <p>￥<%= item.with_tax_price.to_s(:delimited) %></p>
+          </div>
+          <div class></br></div>
+          <% end %>
+        </div>
+      </table>
+    </div>
+  </div>
+</div>
+<div class="d-flex justify-content-center">
+  <%= paginate @items %>
+</div>

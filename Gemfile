@@ -57,3 +57,9 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 ## （2022.6.26　追加）
 gem 'devise'
+
+##gem 'pry-rails'
+
+gem "enum_help"
+
+gem 'kaminari','~> 1.2.1'

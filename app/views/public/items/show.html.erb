@@ -1,0 +1,52 @@
+<p id = "notice"></p>
+<div class = "container px-5 px-sm-0">
+  <div class="row">
+    <div class = "col-md-2 border border-dark">
+      <strong>ジャンル検索</strong></br>
+      <table class = "table">
+        <tbody>
+          <tr>
+            <td>ケーキ</td>
+          </tr>
+          <tr>
+            <td>焼き菓子</td>
+          </tr>
+          <tr>
+            <td>プリン</td>
+          </tr>
+          <tr>
+            <td>キャンディ</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class = "col-lg-1"></div>
+    <div class = "col-lg-3">
+      <% if @item.image.attached? %>
+        <%= image_tag item.image, size: "300x200" %>
+         <% else %>
+         <%= image_tag 'no_image', size: "300x200" %>
+      <% end %>
+    </div>
+    <div class = "col-lg-6">
+      <table>
+      <tr>
+        <p></p>
+        <h4><%= @item.name %></h4>
+        <p><%= @item.introduction %></p>
+        <p></br></p>
+        <p><strong>￥<%= @item.with_tax_price.to_s(:delimited) %></strong>（税込）</p>
+        <p></p>
+        <tr>
+
+        </tr>
+      </tr>
+      </table>
+      <%= form_with model: @cart_item do |f| %>
+        <%= f.select :amount, *[1..10], {prompt: '個数選択'} %>
+        <%= f.hidden_field :item_id, :value => @item.id %>
+        <%= f.submit 'カートに入れる', class:"btn btn-sm btn-success btn-text-light" %>
+      <% end %>
+    </div>
+  </div>
+</div>
